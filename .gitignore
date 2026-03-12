@@ -16,3 +16,6 @@ crash.log
 # Override files
 override.tf
 override.tf.json
+
+#Lock files
+*.terraform.lock.hcl
