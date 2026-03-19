@@ -2,6 +2,8 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
+  enable_irsa = true  # This must be true to create the OIDC provider
+
   cluster_name    = var.cluster_name
   cluster_version = "1.31"
 
@@ -18,7 +20,7 @@ module "eks" {
   # Managed Node Group (The actual servers)
   eks_managed_node_groups = {
     general = {
-      instance_types = ["t3.medium"]
+      instance_types = ["t3.micro"]
       min_size     = 1
       max_size     = 2
       desired_size = 1
