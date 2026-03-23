@@ -3,8 +3,8 @@ kind: Kustomization
 
 resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-  - ../ingress-nginx
-  - argocd-ingress.yaml
+  #- ../ingress-nginx
+  #- argocd-ingress.yaml
 
 
 # This patch adds the IAM Role you created in Step A to the ArgoCD ServiceAccount
