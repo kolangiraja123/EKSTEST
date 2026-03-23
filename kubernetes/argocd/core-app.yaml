@@ -15,7 +15,18 @@ spec:
     namespace: argocd
   syncPolicy:
     syncOptions:
+      - CreateNamespace=true
       - ServerSideApply=true  # This allows handling large CRDs
     automated:
       prune: true      # Automatically delete resources removed from Git
       selfHeal: true   # Automatically fix manual changes in the cluster
+
+  ignoreDifferences:
+    - group: batch
+      kind: Job
+      name: ingress-nginx-admission-create
+      namespace: ingress-nginx
+    - group: batch
+      kind: Job
+      name: ingress-nginx-admission-patch
+      namespace: ingress-nginx
