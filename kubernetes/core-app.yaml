@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: core-mgmt
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # REPLACE with your actual GitHub repository URL
+    repoURL: https://github.com/kolangiraja123/EKSTEST.git
+    targetRevision: HEAD
+    path: kubernetes/argocd  # The folder containing your kustomization.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true      # Automatically delete resources removed from Git
+      selfHeal: true   # Automatically fix manual changes in the cluster
